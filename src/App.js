@@ -23,7 +23,7 @@ function App() {
     }
       fetchData();
   
-    },[])
+    },)
 
 
   async function getCurrentTab() {
@@ -60,7 +60,7 @@ function App() {
             {/* <h1>{localStorage.length} </h1> */}
         
         </div>
-        {/* <a href="" class="btn btn1"><span></span>Hover me</a> */}
+    
         <button className="button" onClick={ resetCounter}> Reset</button>
      {/* <div>the local counter is: {localStorage.length}</div> */}
       </header>
