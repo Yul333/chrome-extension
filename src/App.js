@@ -1,13 +1,32 @@
 /*global chrome*/
 import "./App.css";
 
-import getApiData from './api/api';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+
+import getApiData from "./api/api";
 import { useEffect, useState } from "react";
 
 function App() {
   const [domainInfo, setDomainInfo] = useState({});
   const [domain, setDomain] = useState();
-  // const [currentDomainCounter, setCurrentDomainCounter] = useState(localStorage.length);
+
+  const style = {
+    width: "100%",
+    maxWidth: 300,
+    bgcolor: "background.paper",
+    borderColor: "white",
+    borderWidth: "2px",
+    opacity: 0.5,
+    borderRadius: 3,
+    boxShadow: "1px 2px 9px #323232",
+    fontWeight: 600,
+    fontSize: "12px",
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -21,47 +40,67 @@ function App() {
       setDomainInfo(data);
       console.log("domainInfo", domainInfo);
     }
-      fetchData();
-  
-    },)
-
+    fetchData();
+  }, [domainInfo]);
 
   async function getCurrentTab() {
     const queryOptions = { active: true, lastFocusedWindow: true };
     const [tab] = await chrome.tabs.query(queryOptions);
-
     return tab;
   }
+
   useEffect(() => {
-    localStorage.setItem(`${domain}`, JSON.stringify(domain));
+    if (domain !== undefined) {
+      localStorage.setItem(`${domain}`, JSON.stringify(domain));
+    }
   }, [domain]);
 
-  // console.log("currentDomainCounter", currentDomainCounter);
-
   const resetCounter = () => {
-    // setCurrentDomainCounter (0);
-    console.log("something")
     localStorage.clear();
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>API Counter</h1>
-        <div>
-          {JSON.stringify(domainInfo, null, 2)}
-          <hr/>
-          {/* {currentDomainCounter} */}
-          <hr/>
-          {domain}
-         
-            <h1>{localStorage.length} </h1>
-        
+      <div className="animate-character">IP Counter</div>
+      <List sx={style} component="nav">
+        <ListItem>
+          <ListItemText primary="IP" />
+          <div> {domainInfo.ip}</div>
+        </ListItem>
+        <Divider />
+        <ListItem divider>
+          <ListItemText primary="Location" />
+          <div> {domainInfo.location}</div>
+        </ListItem>
+        <ListItem divider>
+          <ListItemText primary="Country code" />
+          <div> {domainInfo.country_code}</div>
+        </ListItem>
+        <ListItem divider>
+          <ListItemText primary="Organization" />
+          <div style={{ textAlign: "right" }}> {domainInfo.organization}</div>
+        </ListItem>
+        <ListItem divider>
+          <ListItemText primary="Domain" />
+          <div>{domain}</div>
+        </ListItem>
+        <ListItem>
+          <ListItemText primary="Rank" />
+          <div> {domainInfo.rank}</div>
+        </ListItem>
+      </List>
+      {/* </div> */}
+      <div>
+        <div className="buttons">
+          <ButtonGroup variant="contained">
+            <Button style={{ textTransform: "none" }} onClick={resetCounter}>
+              {" "}
+              Reset Counter
+            </Button>
+            <Button disableRipple={true}> {localStorage.length}</Button>
+          </ButtonGroup>
         </div>
-    
-        <button className="button" onClick={ resetCounter}> Reset</button>
-     {/* <div>the local counter is: {localStorage.length}</div> */}
-      </header>
+      </div>
     </div>
   );
 }
