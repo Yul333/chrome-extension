@@ -1,6 +1,7 @@
 /*global chrome*/
 import "./App.css";
 
+import getApiData from './api/api';
 import { useEffect, useState } from "react";
 
 function App() {
@@ -14,25 +15,16 @@ function App() {
       const url = tab.url;
       const domain = url.split("/")[2];
       setDomain(domain);
+      console.log("domain: ", domain);
       const data = await getApiData(domain);
+      console.log("data", data);
       setDomainInfo(data);
+      console.log("domainInfo", domainInfo);
     }
       fetchData();
   
     },[])
 
-
-  async function getApiData(tabUrl) {
-    const reqUrl = `https://hw.arpeely.ai/domain/info?domain=${tabUrl}`;
-    const headers = {
-      "X-Best-Pokemon": "Poliwhirl",
-    };
-    const response = await fetch(reqUrl, {
-      headers,
-    });
-    const data = await response.json();
-    return data;
-  }
 
   async function getCurrentTab() {
     const queryOptions = { active: true, lastFocusedWindow: true };
@@ -43,7 +35,9 @@ function App() {
   useEffect(() => {
 
     localStorage.setItem(`${domain}`, JSON.stringify(domain));
-  }, [domain]);
+  }, [domain, currentDomainCounter]);
+
+  console.log("currentDomainCounter", currentDomainCounter);
 
   const resetCounter = () => {
   
@@ -61,12 +55,12 @@ function App() {
           <hr/>
           {currentDomainCounter}
           <hr/>
-          {/* {domain} */}
+          {domain}
          
             {/* <h1>{localStorage.length} </h1> */}
         
         </div>
-        <button className="button" onClick={resetCounter}> Reset</button>
+        <button className="button" onClick={ resetCounter}> Reset</button>
      {/* <div>the local counter is: {localStorage.length}</div> */}
       </header>
     </div>
