@@ -1,3 +1,76 @@
+
+/* body{
+	margin: 0;
+    padding: 0;
+    background: #2d3436;
+}
+
+a.btn{
+	position: absolute;    
+    color: #fff;    
+    font-size: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 50px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 2px;
+}
+
+a.btn::before, 
+a.btn::after, 
+span::before, 
+span::after{
+	content: '';
+    position: absolute;    
+    width: 10px;
+    height: 10px;
+    transition: 1s;
+}
+
+a.btn::before{
+	top: -0.5px;
+    left: -0.5px;
+    border-top: 2px #C70039 solid;
+    border-left: 2px #C70039 solid;
+}
+
+a.btn::after{
+	top: -0.5px;
+    right: -0.5px;
+    border-top: 2px #C70039 solid;
+    border-right: 2px #C70039 solid;
+} 
+
+span::before{
+	bottom: -0.5px;
+    left: -0.5px;
+    border-bottom: 2px #C70039 solid;
+    border-left: 2px #C70039 solid;
+} 
+
+span::after{
+	bottom: -0.5px;
+    right: -0.5px;
+    border-bottom: 2px #C70039 solid;
+    border-right: 2px #C70039 solid;
+}
+
+a.btn:hover{
+    color: #FF7D95;
+}
+
+a.btn:hover::before,
+a.btn:hover::after,
+a.btn:hover span::before,
+a.btn:hover span::after{
+    width: calc( 190px / 2 );
+    height: calc( 40px / 2 );
+} */
+
 .App {
   text-align: center;
 }
