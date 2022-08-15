@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [domainInfo, setDomainInfo] = useState({});
   const [domain, setDomain] = useState();
-  const [currentDomainCounter, setCurrentDomainCounter] = useState(localStorage.length);
+  // const [currentDomainCounter, setCurrentDomainCounter] = useState(localStorage.length);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,15 +33,13 @@ function App() {
     return tab;
   }
   useEffect(() => {
-
     localStorage.setItem(`${domain}`, JSON.stringify(domain));
-  }, [domain, currentDomainCounter]);
+  }, [domain]);
 
-  console.log("currentDomainCounter", currentDomainCounter);
+  // console.log("currentDomainCounter", currentDomainCounter);
 
   const resetCounter = () => {
-  
-    setCurrentDomainCounter (0);
+    // setCurrentDomainCounter (0);
     console.log("something")
     localStorage.clear();
   };
@@ -53,11 +51,11 @@ function App() {
         <div>
           {JSON.stringify(domainInfo, null, 2)}
           <hr/>
-          {currentDomainCounter}
+          {/* {currentDomainCounter} */}
           <hr/>
           {domain}
          
-            {/* <h1>{localStorage.length} </h1> */}
+            <h1>{localStorage.length} </h1>
         
         </div>
     

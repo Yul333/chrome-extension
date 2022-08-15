@@ -2,6 +2,8 @@
 
 This is a cool extension for chrome that presents all the details for the web page's IP address including location, country code and organization.
 
+I used React framework which I love. Typescript I'm learning to love...
+
 ## API Reference
 
 ### Get api data

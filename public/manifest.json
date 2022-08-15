@@ -9,9 +9,9 @@
   },
   "permissions": ["activeTab", "storage"],
 
-  "icons": 
-  { "16": "poliwhirl-logo.png",
-  "48": "poliwhirl-logo.png",
- "128": "poliwhirl-logo.png" }
-
+  "icons": {
+    "16": "poliwhirl-logo.png",
+    "48": "poliwhirl-logo.png",
+    "128": "poliwhirl-logo.png"
+  }
 }
